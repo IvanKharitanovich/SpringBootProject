@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row centered-form">
+        <form th:action="@{/user/new}" method="POST" th:object="${user}">
+            <div class="form-group">
+                <label for="usernameInput">Username</label>
+                <input type="text" th:field="*{username}" class="form-control" id="usernameInput"
+                       placeholder="Enter username">
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                <p class="alert alert-danger" th:if="${usernameTaken!=null}" th:text="${usernameTaken}"></p>
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input type="password" th:field="*{password}" class="form-control" id="passwordInput"
+                       placeholder="Password">
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            </div>
+            <div class="form-group">
+                <label for="firstNameInput">FirstName</label>
+                <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput"
+                       placeholder="FirstName">
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+            </div>
+            <div class="form-group">
+                <label for="lastNameInput">LastName</label>
+                <input type="text" th:field="*{lastName}" class="form-control" id="lastNameInput"
+                       placeholder="LastName">
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
